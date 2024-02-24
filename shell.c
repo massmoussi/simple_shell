@@ -10,7 +10,7 @@
  * retun: rsult for my command 
  */
 
-int main(void)
+int main(int argc, char **argv)
 {
 	char *userInput = NULL;
 	size_t len = 0;
@@ -22,8 +22,6 @@ int main(void)
 		if (getline(&userInput, &len, stdin) != -1)
 		{
 			userInput[strcspn(userInput, "\n")] = '\0';
-
-			printf(" %s\n", userInput);
 
 			char *token = strtok(userInput, " ");
 			int i = 0;
@@ -41,7 +39,12 @@ int main(void)
 			}
 
 			args[i] = NULL;
-
+	  
+			if (strcmp(args[0], "exit") == 0)
+            {
+                free(userInput);
+                exit(EXIT_SUCCESS);
+            }
 			pid_t child_pid = fork();
 
 			if (child_pid == -1)
@@ -53,7 +56,7 @@ int main(void)
 			if (child_pid == 0)
 			{
 				execvp(args[0], args);
-				perror("execvp");
+				fprintf(stderr ,"%s: No such file or directory\n", argv[0]);
 				exit(1);
 			}
 			else
