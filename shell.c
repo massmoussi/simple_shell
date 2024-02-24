@@ -18,9 +18,14 @@ int main(int argc, char **argv)
 	while (1)
 	{
 		printf("Massmousi: $ ");
+		
+ssize_t bytesRead = getline(&userInput, &len, stdin);
 
-		if (getline(&userInput, &len, stdin) != -1)
-		{
+if (bytesRead == -1) {
+    
+    break;
+}
+		 if (bytesRead > 1) {
 			userInput[strcspn(userInput, "\n")] = '\0';
 
 			char *token = strtok(userInput, " ");
@@ -71,7 +76,7 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			printf("Error reading input.\n");
+			
 		}
 	}
 
