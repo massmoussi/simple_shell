@@ -4,6 +4,12 @@
 #include <string.h>
 #include <sys/wait.h>
 
+/**
+ * main - entry simple shell
+ *
+ * retun: rsult for my command 
+ */
+
 int main(void)
 {
 	char *userInput = NULL;
