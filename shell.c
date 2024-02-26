@@ -10,6 +10,9 @@
  * retun: rsult for my command 
  */
 
+extern char **environ;
+
+
 int main(int argc, char **argv)
 {
 	char *userInput = NULL;
