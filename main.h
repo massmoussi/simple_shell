@@ -11,7 +11,7 @@
 extern char **environ;
 
 void executeCommand(char *userInput);
-void printEnvironmentVariables();
+void printEnvironmentVariables(void);
 void launchChildProcess(char *args[], int argCount);
 
 #endif /* MAIN_H */

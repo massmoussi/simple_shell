@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * launchChildProcess - function handle PID creations
+ * @args: pointer to user argument
+ * @argCount: number of argument
+ */
 void launchChildProcess(char *args[], int argCount)
 {
 	pid_t child_pid = fork();

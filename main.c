@@ -1,5 +1,13 @@
 #include "main.h"
 
+/**
+ * main - entrypoint
+ * Description: entry function for a simpleshell
+ * @argc: number of argument
+ * @argv: pointer to arguent vectors
+ * Return: 0 if Success
+ */
+
 int main(int argc, char **argv)
 {
 	char *userInput = NULL;

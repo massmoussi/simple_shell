@@ -1,5 +1,10 @@
 #include "main.h"
 
+
+/**
+ * executeCommand - function handle user input
+ * @userInput: pointer to input provided by user
+ */
 void executeCommand(char *userInput)
 {
 	char *token = strtok(userInput, " ");
@@ -8,45 +13,46 @@ void executeCommand(char *userInput)
 
 	while (token != NULL && i < 31)
 	{
-	if ((args[i] = strdup(token)) == NULL)
-	{
-	perror("strdup");
-	exit(1);
+		args[i] = strdup(token);
+		if (args[i] == NULL)
+		{
+			perror("strdup");
+			exit(1);
+		}
+		token = strtok(NULL, " ");
+		i++;
 	}
-	token = strtok(NULL, " ");
-	i++;
-	}
-
 	args[i] = NULL;
-
 	if (strcmp(args[0], "exit") == 0)
 	{
-	free(userInput);
-	exit(EXIT_SUCCESS);
+		free(userInput);
+		exit(EXIT_SUCCESS);
 	}
 	else if (strcmp(args[0], "env") == 0)
 	{
-	printEnvironmentVariables();
+		printEnvironmentVariables();
 	}
 	else
 	{
-	launchChildProcess(args, i);
+		launchChildProcess(args, i);
 	}
 
 	for (int j = 0; j < i; j++)
 	{
-	free(args[j]);
+		free(args[j]);
 	}
 }
 
-	void printEnvironmentVariables(void)
-
+/**
+ * printEnvironmentVariables - function print env
+ */
+void printEnvironmentVariables(void)
 {
 	char **env = environ;
+
 	while (*env != NULL)
 	{
 	printf("%s\n", *env);
 	env++;
 	}
 }
-
