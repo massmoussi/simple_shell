@@ -10,6 +10,7 @@ void executeCommand(char *userInput)
 	char *token = strtok(userInput, " ");
 	int i = 0;
 	char *args[32];
+	int j;
 
 	while (token != NULL && i < 31)
 	{
@@ -34,10 +35,10 @@ void executeCommand(char *userInput)
 	}
 	else
 	{
-		launchChildProcess(args, i);
+		launchChildProcess(args);
 	}
 
-	for (int j = 0; j < i; j++)
+	for (j = 0; j < i; j++)
 	{
 		free(args[j]);
 	}

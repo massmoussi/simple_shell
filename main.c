@@ -3,21 +3,21 @@
 /**
  * main - entrypoint
  * Description: entry function for a simpleshell
- * @argc: number of argument
- * @argv: pointer to arguent vectors
  * Return: 0 if Success
  */
 
-int main(int argc, char **argv)
+int main(void)
 {
 	char *userInput = NULL;
 	size_t len = 0;
+	ssize_t bytesRead;
 
 	while (1)
 	{
-		printf("Massmousi: $ ");
+		printf("$ ");
+		fflush(stdout);
 
-	ssize_t bytesRead = getline(&userInput, &len, stdin);
+	bytesRead = getline(&userInput, &len, stdin);
 
 	if (bytesRead == -1)
 	{
