@@ -11,10 +11,11 @@ int main(void)
 	char *userInput = NULL;
 	size_t len = 0;
 	ssize_t bytesRead;
+	char prompt[] = "";
 
 	while (1)
 	{
-		printf("$ ");
+		printf("%s", prompt);
 		fflush(stdout);
 
 	bytesRead = getline(&userInput, &len, stdin);
